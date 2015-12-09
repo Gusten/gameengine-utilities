@@ -1,5 +1,5 @@
-#ifndef __CAMERA_H_INCLUDED__
-#define __CAMERA_H_INCLUDED__
+#ifndef _Camera_h
+#define _Camera_h
 
 #include <math.h>
 #include "../math/Float3.h"
@@ -18,4 +18,4 @@ public:
 
 };
 
-#endif 
+#endif // _Camera_h
