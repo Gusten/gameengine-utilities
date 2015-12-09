@@ -127,7 +127,7 @@ inline const T magnitude(const Vector3<T>& v) {
 // Normalize vector by dividing each component by the length of the vector
 // This will make the total length of the normalized vector 1.
 template <typename T>
-inline const T normalize(const Vector3<T>& v) {
+inline const Vector3<T> normalize(const Vector3<T>& v) {
 	return v / length(v);
 }
 

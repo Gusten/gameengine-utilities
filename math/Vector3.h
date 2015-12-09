@@ -51,7 +51,7 @@ template <typename T>
 const T magnitude(const Vector3<T>& v);
 
 template <typename T>
-const T normalize(const Vector3<T>& v);
+const Vector3<T> normalize(const Vector3<T>& v);
 
 template <typename T>
 const Vector3<T> make_vector(const T& x, const T& y, const T& z);
