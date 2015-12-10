@@ -17,10 +17,11 @@ public:
 	Float4x4();
 
 	void toConsole();
+	void toConsole() const;
 
-	const Float4x4 operator +  (const Float4x4 &B) const;
-	const Float4x4 operator -  (const Float4x4 &B) const;
-	const Float4x4 operator *  (const Float4x4 &B) const;
+	const Float4x4 operator +  (const Float4x4& B) const;
+	const Float4x4 operator -  (const Float4x4& B) const;
+	const Float4x4 operator *  (const Float4x4& B) const;
 
 	float&  operator() (int row, int col);
 	float   operator() (int row, int col) const;
@@ -28,7 +29,7 @@ public:
 	void transpose();
 
 	static Float4x4 createIdentity();
-	static Float4x4 createTransposedFrom(const Float4x4 &B);
+	static Float4x4 createTransposedFrom(const Float4x4& B);
 	static Float4x4 createTranslation(float x, float y, float z);
 	static Float4x4 createRotationX(float v);
 	static Float4x4 createRotationY(float v);

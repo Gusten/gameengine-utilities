@@ -1,3 +1,6 @@
+#ifndef _USE_MATH_DEFINES
+#define _USE_MATH_DEFINES
+
 #include "Float4x4.h"
 #include <iostream>
 #include <math.h>
@@ -41,7 +44,19 @@ void Float4x4::toConsole() {
 	// Adding two newlines for better readability when printing many matrixes
 	std::cout << std::endl;
 	std::cout << std::endl;
-	for (int i = 0; i < 4; i++)	{
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 4; j++) {
+			std::cout << this->matrix[i][j] << " ";
+		}
+		std::cout << std::endl;
+	}
+}
+
+void Float4x4::toConsole() const {
+	// Adding two newlines for better readability when printing many matrixes
+	std::cout << std::endl;
+	std::cout << std::endl;
+	for (int i = 0; i < 4; i++) {
 		for (int j = 0; j < 4; j++) {
 			std::cout << this->matrix[i][j] << " ";
 		}
@@ -58,29 +73,29 @@ float Float4x4::operator() (int row, int col) const {
 	return matrix[row][col];
 }
 
-const Float4x4 Float4x4::operator +  (const Float4x4 &B) const {
+const Float4x4 Float4x4::operator + (const Float4x4& B) const {
 	Float4x4 C;
 	const Float4x4 &A = *this;
 	for (int i = 0; i < 4; i++) {
-		for (int j = 0; i < 4; j++) {
+		for (int j = 0; j < 4; j++) {
 			C.matrix[i][j] = A.matrix[i][j] + B.matrix[i][j];
 		}
 	}
 	return C;
 }
 
-const Float4x4 Float4x4::operator -  (const Float4x4 &B) const {
+const Float4x4 Float4x4::operator - (const Float4x4& B) const {
 	Float4x4 C;
 	const Float4x4 &A = *this;
 	for (int i = 0; i < 4; i++) {
-		for (int j = 0; i < 4; j++) {
+		for (int j = 0; j < 4; j++) {
 			C.matrix[i][j] = A.matrix[i][j] - B.matrix[i][j];
 		}
 	}
 	return C;
 }
 
-const Float4x4 Float4x4::operator * (const Float4x4 &B) const {
+const Float4x4 Float4x4::operator * (const Float4x4& B) const {
 	Float4x4 C;
 	const Float4x4 &A = *this;
 	for (int i = 0; i < 4; ++i) {
@@ -97,10 +112,11 @@ const Float4x4 Float4x4::operator * (const Float4x4 &B) const {
 
 void Float4x4::transpose() {
 	Float4x4 transposed;
-	for (int i = 0; i < 4; ++i)
-		for (int j = 0; j < 4; ++j)
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 4; j++) {
 			transposed.matrix[i][j] = (*this).matrix[j][i];
-
+		}
+	}
 	(*this) = transposed;
 }
 
@@ -113,14 +129,13 @@ Float4x4 Float4x4::createIdentity() {
 		);
 }
 
-Float4x4 Float4x4::createTransposedFrom(const Float4x4 &B) {
+Float4x4 Float4x4::createTransposedFrom(const Float4x4& B) {
 	Float4x4 transposed;
-	for (int i = 0; i < 4; ++i) {
-		for (int j = 0; j < 4; ++j) {
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 4; j++) {
 			transposed.matrix[i][j] = B.matrix[j][i];
 		}
 	}
-
 	return transposed;
 }
 
@@ -162,8 +177,7 @@ Float4x4 Float4x4::createRotationZ(float v) {
 
 Float4x4 Float4x4::createPerspective(float fov, float aspect, float near, float far)
 {
-	//TODO: Fix a better PI
-	float angle = (fov / 180.0f) * 3.14;
+	float angle = (fov / 180.0f) * M_PI;
 	float f = 1.0f / tan(angle * 0.5f);
 
 	return Float4x4	(
@@ -173,3 +187,5 @@ Float4x4 Float4x4::createPerspective(float fov, float aspect, float near, float 
 			0, 0, 2 * far * near / (near - far), 0
 		);
 }
+
+#endif
