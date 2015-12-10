@@ -1,25 +1,38 @@
-#ifndef _gameutil_Float4x4_h
-#define _gameutil_Float4x4_h
 
-#include <array>
-
-namespace gameutil 
-{
-
-template <typename float>
 class Float4x4
 {
+private:
+	// Only used as a helpler function, no need so far to expose it
+	Float4x4(
+			 float, float, float, float,
+			 float, float, float, float, 
+			 float, float, float, float, 
+			 float, float, float, float
+			);
+
+	float matrix[4][4];
 public:
-	std::array<float, 16> elements;
+	const static Float4x4 DEFAULT;
 
-	const Float4x4 operator * (const Float4x4& m) const;
+	Float4x4();
+	~Float4x4() {}
+
+	void toConsole();
+
+	const Float4x4 operator +  (const Float4x4 &B) const;
+	const Float4x4 operator -  (const Float4x4 &B) const;
+	const Float4x4 operator *  (const Float4x4 &B) const;
+
+	float&  operator() (int row, int col);
+	float   operator() (int row, int col) const;
+
+	void transpose();
+
+	static Float4x4 createIdentity();
+	static Float4x4 createTransposedFrom(const Float4x4 &B);
+	static Float4x4 createTranslation(float x, float y, float z);
+	static Float4x4 createRotationX(float v);
+	static Float4x4 createRotationY(float v);
+	static Float4x4 createRotationZ(float v);
+	static Float4x4 createPerspective(float fov, float aspect, float near, float far);
 };
-
-template <typename float>
-const Float4x4 make_identity<Float4x4>();
-
-
-
-} // namespace
-
-#endif // _gameutil_Float4x4_h
