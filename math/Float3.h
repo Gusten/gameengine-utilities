@@ -5,9 +5,7 @@
 
 namespace gameutil
 {
-
-typedef Vector3<float> Float3;
-
+	typedef Vector3<float> Float3;
 }
 
 #endif // _Float3_h

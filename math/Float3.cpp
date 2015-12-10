@@ -1,3 +1,3 @@
 #include "Float3.h"
 
-template class Vector3<float>;
+template class gameutil::Vector3<float>;
