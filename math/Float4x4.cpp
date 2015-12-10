@@ -41,11 +41,10 @@ void Float4x4::toConsole() {
 	// Adding two newlines for better readability when printing many matrixes
 	std::cout << std::endl;
 	std::cout << std::endl;
-	for (int i = 0; i < 4; i++)
-	{
-		for (int j = 0; j < 4; j++)
+	for (int i = 0; i < 4; i++)	{
+		for (int j = 0; j < 4; j++) {
 			std::cout << this->matrix[i][j] << " ";
-
+		}
 		std::cout << std::endl;
 	}
 }

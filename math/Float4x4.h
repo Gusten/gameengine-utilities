@@ -15,7 +15,6 @@ public:
 	const static Float4x4 DEFAULT;
 
 	Float4x4();
-	~Float4x4() {}
 
 	void toConsole();
 
